@@ -13,4 +13,4 @@ ARG KC_DB_PASSWORD
 ARG KC_HOSTNAME
 ENV KC_HTTP_ENABLED=true
 ENV KC_PROXY=edge
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]

@@ -1,10 +1,4 @@
-FROM alpine/curl:8.1.2 as digicert
-
-WORKDIR /app
-RUN curl https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem -o DigiCertGlobalRootCA.crt.pem
-
-FROM quay.io/keycloak/keycloak:latest as builder
-COPY --from=digicert /app/DigiCertGlobalRootCA.crt.pem /opt/keycloak/.postgresql/root.crt
+FROM quay.io/keycloak/keycloak:20.0.5 as builder
 
 ENV KC_DB=postgres
 RUN /opt/keycloak/bin/kc.sh build
